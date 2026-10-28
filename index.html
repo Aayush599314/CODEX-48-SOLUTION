@@ -1,1 +1,544 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Inkloom AI</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap">
+<style>
+/* Layout: purple-gradient app-landing style (hero, wave dividers, stat row, rounded cards on a gradient band, step grid, CTA band, wave footer) */
+:root{
+  --bg:#ffffff;
+  --bg-soft:#f6f2ff;
+  --surface:#ffffff;
+  --fg:#1d1537;
+  --muted:#5f5778;
+  --line:#e4dcf7;
+  --brand:#5b2be0;
+  --brand-2:#b620e0;
+  --brand-deep:#2b1170;
+  --on-brand:#ffffff;
+  --high:#c42b4a;
+  --low:#b7791f;
+  --ok:#1f8a5b;
+  --warn:#c77d0a;
+  --grad:linear-gradient(135deg,#5b2be0 0%,#8a2be2 55%,#b620e0 100%);
+  --grad-deep:linear-gradient(135deg,#2b1170 0%,#4a1fb8 60%,#7b24c9 100%);
+  --shadow:0 18px 40px -18px rgba(70,30,160,.35);
+  --font-display:'Poppins','Segoe UI',system-ui,sans-serif;
+  --font-body:'DM Sans','Segoe UI',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#130d26;--bg-soft:#191132;--surface:#1f1640;--fg:#f1ecff;--muted:#b4a9d6;--line:#3a2d68;
+  --brand:#9b7bff;--high:#ff7a93;--low:#f0b45a;--ok:#4fd39a;--warn:#f0b45a;
+  --shadow:0 18px 40px -18px rgba(0,0,0,.7);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#130d26;--bg-soft:#191132;--surface:#1f1640;--fg:#f1ecff;--muted:#b4a9d6;--line:#3a2d68;
+  --brand:#9b7bff;--high:#ff7a93;--low:#f0b45a;--ok:#4fd39a;--warn:#f0b45a;
+  --shadow:0 18px 40px -18px rgba(0,0,0,.7);color-scheme:dark}
 
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:var(--font-display);line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brand-2);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{position:relative}
+.eyebrow{font-family:var(--font-display);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--brand)}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 44px;display:flex;flex-direction:column;gap:12px;align-items:center}
+.sec-head h2{font-size:clamp(1.7rem,3.4vw,2.3rem)}
+.sec-head p{color:var(--muted)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:600;font-size:.9rem;text-decoration:none;border:0;border-radius:999px;padding:13px 26px;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--grad);color:#fff;box-shadow:0 12px 24px -10px rgba(91,43,224,.7)}
+.btn-white{background:#fff;color:#4a1fb8}
+.btn-ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.7)}
+.btn-line{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 2px var(--line)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+
+/* HERO */
+.hero{background:var(--grad-deep);color:#fff;padding-bottom:140px;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero::before{width:120px;height:120px;left:4%;top:90px;background:radial-gradient(circle at 30% 30%,#8f78ff,#4a2ed0);opacity:.8}
+.hero::after{width:260px;height:260px;right:-60px;bottom:60px;background:radial-gradient(circle,rgba(182,32,224,.55),transparent 70%)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px;position:relative;z-index:2}
+.brand{font-family:var(--font-display);font-weight:700;font-size:1.5rem;text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand svg{width:30px;height:30px}
+.nav-links{display:flex;gap:28px;font-family:var(--font-display);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.nav-links a{text-decoration:none;opacity:.9}
+.nav-links a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.nav .btn{padding:10px 20px;font-size:.8rem}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-top:46px;position:relative;z-index:2}
+.pill{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:5px 14px;border-radius:999px;font-size:.8rem;margin-bottom:20px}
+.hero h1{font-size:clamp(2.3rem,5.4vw,3.8rem);font-weight:700}
+.hero h1 span{font-weight:500;display:block;opacity:.95}
+.hero p.lead{margin-top:20px;max-width:30em;color:rgba(255,255,255,.88);font-size:1.05rem}
+.hero .tag{margin-top:26px;font-size:.9rem;color:rgba(255,255,255,.75)}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+
+/* floating review card in hero */
+.stage{position:relative;min-height:360px;display:grid;place-items:center}
+.stage::before{content:"";position:absolute;inset:8% 4% 0;border-radius:50%;background:radial-gradient(ellipse at 50% 70%,rgba(0,0,0,.35),transparent 65%)}
+.rc{position:relative;width:min(100%,400px);background:var(--surface);color:var(--fg);border-radius:22px;padding:20px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);transform:rotate(-2deg)}
+.rc-top{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--muted);margin-bottom:12px}
+.rc-top b{font-family:var(--font-display);color:var(--fg);font-size:.88rem}
+.rc-draft{font-size:.88rem;background:var(--bg-soft);border-radius:12px;padding:12px 14px;line-height:1.55}
+.rc-draft mark{background:rgba(196,43,74,.16);color:inherit;border-radius:4px;padding:0 3px}
+.rc-draft mark.l{background:rgba(199,125,10,.2)}
+.rc-find{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.rc-f{display:flex;align-items:center;gap:10px;font-size:.82rem;border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.rc-f i{font-style:normal;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:999px;color:#fff;background:var(--high)}
+.rc-f i.l{background:var(--low)}
+.rc-f em{margin-left:auto;font-style:normal;color:var(--muted);font-size:.78rem}
+.rc-ev{margin-top:12px;font-size:.76rem;color:var(--muted);display:flex;gap:8px;align-items:center}
+.rc-ev b{color:var(--ok);font-weight:700}
+.chip{position:absolute;background:var(--surface);color:var(--fg);border-radius:14px;padding:9px 14px;font-size:.78rem;font-weight:700;box-shadow:var(--shadow);font-family:var(--font-display)}
+.chip.a{right:-4px;top:6%;transform:rotate(4deg)}
+.chip.b{left:-6px;bottom:8%;transform:rotate(-4deg)}
+.chip span{color:var(--ok)}
+.wave{display:block;width:100%;height:auto;position:absolute;left:0;bottom:-1px;z-index:1}
+.wave path{fill:var(--bg)}
+.wave.soft path{fill:var(--bg-soft)}
+
+/* PROBLEM */
+.problem{padding:70px 0 90px}
+.gap-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:20px 56px;margin:0 auto 14px}
+.gap-stat{display:flex;align-items:center;gap:14px}
+.gap-ico{width:50px;height:50px;border-radius:16px;display:grid;place-items:center;color:#fff;background:var(--grad)}
+.gap-ico.b{background:linear-gradient(135deg,#2b8fe0,#5b2be0)}
+.gap-ico.c{background:linear-gradient(135deg,#e0207f,#b620e0)}
+.gap-ico svg{width:24px;height:24px}
+.gap-num{font-family:var(--font-display);font-size:1.7rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.gap-lbl{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.gap-note{text-align:center;color:var(--muted);font-size:.9rem;margin-bottom:46px}
+.gap-note em{font-style:normal;background:var(--bg-soft);padding:2px 10px;border-radius:999px;margin-right:6px;font-size:.78rem;font-weight:700;color:var(--brand)}
+.issues{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.issue{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:10px;transition:transform .2s,box-shadow .2s}
+.issue:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.issue .ico{width:44px;height:44px;border-radius:14px;background:var(--bg-soft);color:var(--brand);display:grid;place-items:center}
+.issue .ico svg{width:22px;height:22px}
+.issue h3{font-size:1.02rem}
+.issue p{color:var(--muted);font-size:.93rem}
+
+/* BAND (gradient with 2x2 cards) */
+.band{background:var(--grad);color:#fff;padding:90px 0;overflow:hidden;isolation:isolate}
+.band::before{content:"";position:absolute;right:-8%;top:-20%;width:62%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,92,235,.5),rgba(255,92,235,0) 68%);z-index:-1}
+.band-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}
+.cards2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card2{background:var(--surface);color:var(--fg);border-radius:18px;padding:22px;box-shadow:0 24px 40px -22px rgba(20,5,70,.7)}
+.card2 .ico{width:38px;height:38px;border-radius:12px;background:var(--bg-soft);color:var(--brand);display:grid;place-items:center;margin-bottom:12px}
+.card2 .ico svg{width:20px;height:20px}
+.card2 h3{font-size:1rem;margin-bottom:6px}
+.card2 p{font-size:.9rem;color:var(--muted)}
+.band-copy{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.band-copy h2{font-size:clamp(1.6rem,3vw,2.1rem)}
+.band-copy p{color:rgba(255,255,255,.88)}
+
+/* DEMO */
+.demo{padding:90px 0;background:var(--bg-soft)}
+.demo-shell{background:var(--surface);border-radius:28px;box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden}
+.demo-bar{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line)}
+.demo-bar .file{font-family:var(--font-display);font-size:.92rem;font-weight:600;display:flex;gap:10px;align-items:center}
+.demo-bar .file small{font-family:var(--font-body);font-weight:500;color:var(--muted);background:var(--bg-soft);padding:2px 10px;border-radius:999px}
+.demo-actions{display:flex;gap:10px;flex-wrap:wrap}
+.demo-actions .btn{padding:10px 20px;font-size:.82rem}
+.demo-body{display:grid;grid-template-columns:1.1fr .9fr}
+.pane{padding:24px;min-width:0}
+.pane + .pane{border-left:1px solid var(--line);background:var(--bg-soft)}
+.pane h3{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:14px}
+.draft{white-space:pre-wrap;font-size:1.02rem;line-height:1.8;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:20px}
+.draft .hit{border-radius:6px;padding:1px 4px;transition:background .2s}
+.draft .hit.pending{background:rgba(196,43,74,.18);box-shadow:inset 0 -2px 0 var(--high)}
+.draft .hit.pending.low{background:rgba(199,125,10,.22);box-shadow:inset 0 -2px 0 var(--low)}
+.draft .hit.accepted{background:rgba(31,138,91,.2);box-shadow:inset 0 -2px 0 var(--ok)}
+.draft .hit.rejected{background:transparent;box-shadow:inset 0 -2px 0 var(--muted);text-decoration:none}
+.draft .hit.escalated{background:rgba(199,125,10,.22);box-shadow:inset 0 -2px 0 var(--warn)}
+.progress{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:.88rem;color:var(--muted)}
+.progress .bar{flex:1;height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.progress .bar i{display:block;height:100%;width:0;background:var(--grad);transition:width .4s}
+.progress b{color:var(--fg);font-variant-numeric:tabular-nums}
+.empty{color:var(--muted);font-size:.95rem;padding:26px 8px;text-align:center}
+.findings{display:flex;flex-direction:column;gap:14px}
+.fnd{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.fnd-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.sev{font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--high);padding:2px 10px;border-radius:999px}
+.sev.low{background:var(--low)}
+.fnd h4{margin:0;font-family:var(--font-display);font-size:.95rem}
+.change{font-size:.9rem;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.change s{color:var(--muted)}
+.change b{color:var(--ok)}
+.ev{font-size:.8rem;color:var(--muted);border-left:3px solid var(--line);padding-left:10px}
+.fnd-actions{display:flex;gap:8px;flex-wrap:wrap}
+.fnd-actions button{font-family:var(--font-display);font-weight:600;font-size:.76rem;border-radius:999px;padding:7px 14px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.fnd-actions button:hover{border-color:var(--brand)}
+.fnd-actions .acc{background:var(--grad);color:#fff;border-color:transparent}
+.fnd .state{font-size:.82rem;font-weight:700}
+.fnd.done .state.accepted{color:var(--ok)}
+.fnd.done .state.rejected{color:var(--muted)}
+.fnd.done .state.escalated{color:var(--warn)}
+.log{border-top:1px solid var(--line);padding:18px 24px;font-size:.86rem}
+.log h3{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+.log ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;font-variant-numeric:tabular-nums}
+.log li{display:flex;gap:12px;flex-wrap:wrap}
+.log li time{color:var(--muted)}
+.log .none{color:var(--muted)}
+.scan{display:none;align-items:center;gap:10px;color:var(--muted);font-size:.92rem;padding:20px 4px}
+.scan.on{display:flex}
+.scan i{width:16px;height:16px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--brand-2);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* HOW */
+.how{padding:90px 0}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:s}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;position:relative}
+.step .n{width:42px;height:42px;border-radius:50%;background:var(--grad);color:#fff;font-family:var(--font-display);font-weight:700;display:grid;place-items:center;margin-bottom:16px;box-shadow:0 10px 18px -8px rgba(91,43,224,.7)}
+.step h3{font-size:1.08rem;margin-bottom:6px}
+.step p{color:var(--muted);font-size:.93rem}
+.step:not(:nth-child(3n))::after{content:"";position:absolute;right:-22px;top:46px;width:22px;height:2px;background:repeating-linear-gradient(90deg,var(--brand-2) 0 4px,transparent 4px 8px)}
+.step.last{background:var(--grad);color:#fff;border:0}
+.step.last p{color:rgba(255,255,255,.88)}
+.step.last .n{background:#fff;color:#4a1fb8}
+
+/* WHO */
+.who{padding:20px 0 100px;background:var(--bg)}
+.people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.person{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
+.person .q{font-family:var(--font-display);font-size:3rem;line-height:.6;height:22px;color:var(--brand-2)}
+.person p{color:var(--muted);font-size:.93rem;flex:1}
+.who-foot{display:flex;align-items:center;gap:12px}
+.av{width:44px;height:44px;border-radius:50%;background:var(--grad);color:#fff;font-family:var(--font-display);font-weight:700;display:grid;place-items:center;flex:none}
+.who-foot b{display:block;font-family:var(--font-display);font-size:.95rem}
+.who-foot small{color:var(--muted);font-size:.78rem}
+
+/* CTA */
+.cta{background:var(--grad-deep);color:#fff;padding:64px 0 120px;text-align:center;overflow:hidden}
+.cta .wrap{display:flex;flex-direction:column;align-items:center;gap:16px;position:relative;z-index:2}
+.cta h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
+.cta p{max-width:34em;color:rgba(255,255,255,.85)}
+.cta .cta-row{justify-content:center}
+.cta .wave path{fill:var(--bg)}
+
+/* FOOTER */
+footer{background:var(--grad-deep);color:#fff;padding:70px 0 40px;position:relative}
+footer .wave{top:-1px;bottom:auto;transform:rotate(180deg)}
+footer .wave path{fill:var(--bg)}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:32px;position:relative;z-index:2}
+.foot-grid h4{font-family:var(--font-display);font-size:.9rem;margin:0 0 12px}
+.foot-grid a{display:block;text-decoration:none;opacity:.85;font-size:.92rem;padding:3px 0}
+.foot-grid a:hover{opacity:1;text-decoration:underline}
+.foot-grid p{font-size:.92rem;opacity:.85;margin-top:8px;max-width:26em}
+.legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.2);font-size:.82rem;opacity:.8;position:relative;z-index:2}
+.theme{background:rgba(255,255,255,.14);border:0;color:#fff;border-radius:999px;padding:9px 16px;font-family:var(--font-display);font-size:.76rem;font-weight:600;cursor:pointer}
+
+@media (max-width:960px){
+  .hero-grid,.band-grid,.demo-body{grid-template-columns:1fr}
+  .pane + .pane{border-left:0;border-top:1px solid var(--line)}
+  .issues,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .step::after{display:none!important}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+}
+@media (max-width:600px){
+  .issues,.steps,.people,.cards2,.foot-grid{grid-template-columns:1fr}
+  .hero{padding-bottom:90px}
+  .chip{display:none}
+  .gap-stats{gap:18px 28px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top" aria-label="Inkloom AI home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#e9c9ff"/></linearGradient></defs><path d="M16 2c5 6 9 10 9 16a9 9 0 0 1-18 0c0-6 4-10 9-16z" fill="url(#lg)"/><path d="M12 20c1.5 3 5.5 3 8 0" stroke="#5b2be0" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
+        Inkloom AI
+      </a>
+      <div class="nav-links">
+        <a href="#problem">Problem</a><a href="#demo">Demo</a><a href="#how">How it works</a><a href="#who">Who it's for</a><a href="#trust">Trust</a>
+      </div>
+      <a class="btn btn-white" href="#demo">Try the demo</a>
+    </nav>
+
+    <div class="hero-grid">
+      <div>
+        <span class="pill">Concept prototype</span>
+        <h1>Create freely. <span>Publish confidently.</span></h1>
+        <p class="lead">Inkloom AI reviews draft content before it is published, checking it against approved brand guidelines, product facts, terminology, visual assets and accessibility rules. Every finding is backed by cited evidence, and a human makes the final call.</p>
+        <div class="cta-row">
+          <a class="btn btn-white" href="#demo">Try the demo</a>
+          <a class="btn btn-ghost" href="#how">How it works</a>
+        </div>
+        <p class="tag">Your pre-publication brand guardian. Evidence-backed, explainable, human-controlled.</p>
+      </div>
+
+      <div class="stage" aria-hidden="true">
+        <div class="rc">
+          <div class="rc-top"><b>Inkloom Review</b><span>Draft · concept</span></div>
+          <div class="rc-draft">Meet NovaSuite — the all-in-one platform for growing teams. <mark class="l">Nova Suite</mark> brings every workflow together. With <mark>50</mark> product features across planning, teams report <mark>up to 300% business growth</mark> in their first quarter.</div>
+          <div class="rc-find">
+            <div class="rc-f"><i>High</i>Feature count mismatch<em>50 → 35</em></div>
+            <div class="rc-f"><i>High</i>Unsupported growth claim<em>No evidence</em></div>
+            <div class="rc-f"><i class="l">Low</i>Naming inconsistency<em>Nova Suite → NovaSuite</em></div>
+          </div>
+          <div class="rc-ev"><b>Evidence-backed</b> “Product Fact Sheet v3, Features, line 12”</div>
+        </div>
+        <div class="chip a">3 findings</div>
+        <div class="chip b"><span>Human</span> decides</div>
+      </div>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,70 C240,10 480,20 720,60 C960,100 1200,110 1440,40 L1440,120 L0,120 Z"/></svg>
+</header>
+
+<main>
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The problem</span>
+      <h2>Content creation is scaling. Brand control is not.</h2>
+      <p>As more people publish more content across more channels, the gaps in brand governance widen. Here is where drafts most often slip through.</p>
+    </div>
+
+    <div class="gap-stats">
+      <div class="gap-stat"><span class="gap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h6"/></svg></span><div><div class="gap-num">50</div><div class="gap-lbl">Claimed in draft</div></div></div>
+      <div class="gap-stat"><span class="gap-ico b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span><div><div class="gap-num">35</div><div class="gap-lbl">Approved in fact sheet</div></div></div>
+      <div class="gap-stat"><span class="gap-ico c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></span><div><div class="gap-num">15</div><div class="gap-lbl">Feature gap</div></div></div>
+    </div>
+    <p class="gap-note"><em>Hypothetical example</em>A 15-feature gap between what the draft claims and what is approved.</p>
+
+    <div class="issues">
+      <article class="issue"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span><h3>Unsupported claims</h3><p>Numbers and stats slip into content with no cited source behind them.</p></article>
+      <article class="issue"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg></span><h3>Incorrect information</h3><p>Outdated or wrong product facts get published before anyone notices.</p></article>
+      <article class="issue"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><h3>Inconsistent messaging</h3><p>Tone, names, and phrasing drift across teams and channels.</p></article>
+      <article class="issue"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg></span><h3>Unapproved assets</h3><p>Old logos, off-brand visuals, and retired imagery resurface in drafts.</p></article>
+      <article class="issue"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M5 9l7 1 7-1M12 10v5M9 21l3-6 3 6"/></svg></span><h3>Accessibility issues</h3><p>Alt text, contrast, and language checks are easy to miss late in review.</p></article>
+      <article class="issue"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Manual review bottlenecks</h3><p>Reviewers drown in drafts and checks instead of focusing on judgement.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="demo" id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Interactive demo</span>
+      <h2>Try a brand review on a sample draft</h2>
+      <p>Run the review, then accept, reject, or escalate each finding. Every decision is logged. This is mock data for a fictional product, and no real content is analysed.</p>
+    </div>
+
+    <div class="demo-shell">
+      <div class="demo-bar">
+        <div class="file">Draft · NovaSuite launch post.md <small>Concept</small></div>
+        <div class="demo-actions">
+          <button class="btn btn-solid" id="run" type="button">Run review</button>
+          <button class="btn btn-line" id="reset" type="button">Reset demo</button>
+        </div>
+      </div>
+      <div class="demo-body">
+        <div class="pane">
+          <h3>Draft</h3>
+          <div class="draft" id="draft" aria-live="polite"></div>
+          <div class="progress"><span>Progress <b id="pcount">0 of 3 resolved</b></span><div class="bar"><i id="pbar"></i></div></div>
+        </div>
+        <div class="pane">
+          <h3>Findings</h3>
+          <div class="scan" id="scan"><i></i>Scanning draft against approved sources…</div>
+          <div class="empty" id="empty">Press “Run review” to scan this draft for brand issues. Findings will appear here after you run the review.</div>
+          <div class="findings" id="findings"></div>
+        </div>
+      </div>
+      <div class="log">
+        <h3>Audit log</h3>
+        <ol id="log"><li class="none">No decisions yet.</li></ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How it works</span>
+      <h2>From draft to decision in six steps</h2>
+      <p>Every finding is paired with cited evidence, then routed to a person who decides.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Ingest</h3><p>Draft content connects to the review workspace.</p></div>
+      <div class="step"><div class="n">2</div><h3>Analyse</h3><p>Structure, claims, and naming are parsed.</p></div>
+      <div class="step"><div class="n">3</div><h3>Retrieve</h3><p>Approved sources are matched for evidence.</p></div>
+      <div class="step"><div class="n">4</div><h3>Explain</h3><p>Each finding is paired with a cited source.</p></div>
+      <div class="step"><div class="n">5</div><h3>Route</h3><p>Findings go to the right reviewer, by role.</p></div>
+      <div class="step last"><div class="n">6</div><h3>Decide</h3><p>A human accepts, rejects, or escalates each one.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="trust">
+  <div class="wrap band-grid">
+    <div class="cards2">
+      <div class="card2"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><h3>Privacy</h3><p>Drafts are reviewed in your workspace. Nothing is sold or repurposed.</p></div>
+      <div class="card2"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Security</h3><p>Access is role-scoped and decisions are logged for accountability.</p></div>
+      <div class="card2"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><h3>Human oversight</h3><p>Every finding waits for a person to accept, reject, or escalate.</p></div>
+      <div class="card2"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M5 9l7 1 7-1M12 10v5M9 21l3-6 3 6"/></svg></span><h3>Accessibility</h3><p>Reviews include contrast, alt text, and plain-language checks.</p></div>
+    </div>
+    <div class="band-copy">
+      <span class="eyebrow" style="color:#f2d4ff">Trust by design</span>
+      <h2>The principles behind how Inkloom AI handles content and decisions</h2>
+      <p>Evidence-backed, explainable and human-controlled.</p>
+      <a class="btn btn-white" href="#demo">Try the demo</a>
+    </div>
+  </div>
+</section>
+
+<section class="who" id="who" style="padding-top:90px">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Built for the people who create, protect, and approve brand content</h2>
+    </div>
+    <div class="people">
+      <article class="person"><div class="q">“</div><p><b>Needs:</b> Intent-preserving fixes that respect the voice of the draft.</p><div class="who-foot"><span class="av">C</span><div><b>Content creators</b><small>Write and publish</small></div></div></article>
+      <article class="person"><div class="q">“</div><p><b>Needs:</b> Pattern visibility across every team and channel.</p><div class="who-foot"><span class="av">B</span><div><b>Brand managers</b><small>Own the guidelines</small></div></div></article>
+      <article class="person"><div class="q">“</div><p><b>Needs:</b> Traceable evidence gates before anything ships.</p><div class="who-foot"><span class="av">R</span><div><b>Authorised reviewers</b><small>Make the final call</small></div></div></article>
+      <article class="person"><div class="q">“</div><p><b>Needs:</b> Workspace-specific rules they can align to from day one.</p><div class="who-foot"><span class="av">A</span><div><b>Agencies &amp; freelancers</b><small>Work across brands</small></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Create freely. Publish confidently.</h2>
+    <p>Run the sample review, decide on each finding yourself, and watch the audit log fill up.</p>
+    <div class="cta-row"><a class="btn btn-white" href="#demo">Try the demo</a><a class="btn btn-ghost" href="#how">How it works</a></div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,60 C300,120 600,0 900,50 C1150,90 1300,100 1440,30 L1440,120 L0,120 Z"/></svg>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" style="font-size:1.3rem">Inkloom AI</a>
+        <p>A concept for a pre-publication brand guardian. Evidence-backed, explainable, human-controlled.</p>
+      </div>
+      <div><h4>Explore</h4><a href="#problem">Problem</a><a href="#demo">Demo</a><a href="#how">How it works</a></div>
+      <div><h4>About</h4><a href="#who">Who it's for</a><a href="#trust">Trust by design</a></div>
+      <div><h4>Tagline</h4><p style="margin-top:0">“Create freely. Publish confidently.”</p><button class="theme" id="theme" type="button" style="margin-top:14px">Toggle theme</button></div>
+    </div>
+    <div class="legal">Concept prototype by Team Celestial Grid, Sagar Institute of Science and Technology, Bhopal. This is a proposed concept, not production software. The NovaSuite product and figures shown in the demo are fictional and for illustration only.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var parts=[
+    {t:"Meet NovaSuite — the all-in-one platform for growing teams. "},
+    {f:"n"},
+    {t:" brings every workflow together.\n\nWith "},
+    {f:"c"},
+    {t:" product features across planning, teams report "},
+    {f:"g"},
+    {t:"."}
+  ];
+  var F={
+    n:{sev:"Low",title:"Naming inconsistency",orig:"Nova Suite",fix:"NovaSuite",ev:"Brand Terminology Guide, Product names"},
+    c:{sev:"High",title:"Feature count mismatch",orig:"50",fix:"35",ev:"Product Fact Sheet v3, Features, line 12"},
+    g:{sev:"High",title:"Unsupported growth claim",orig:"up to 300% business growth in their first quarter",fix:"faster, clearer planning from day one",ev:"No approved source for “300%” in the Claims Register"}
+  };
+  var order=["c","g","n"];
+  var state={ran:false,s:{c:"pending",g:"pending",n:"pending"}};
+  var $=function(id){return document.getElementById(id)};
+  var draft=$("draft"),list=$("findings"),empty=$("empty"),scan=$("scan"),log=$("log");
+  var timer=null;
+
+  function renderDraft(){
+    draft.textContent="";
+    parts.forEach(function(p){
+      if(p.t){draft.appendChild(document.createTextNode(p.t));return}
+      var f=F[p.f],st=state.s[p.f],span=document.createElement("span");
+      if(!state.ran){span.textContent=f.orig;draft.appendChild(span);return}
+      span.className="hit "+st+(f.sev==="Low"&&st==="pending"?" low":"");
+      span.textContent=st==="accepted"?f.fix:f.orig;
+      draft.appendChild(span);
+    });
+  }
+  function renderFindings(){
+    list.textContent="";
+    if(!state.ran)return;
+    order.forEach(function(k){
+      var f=F[k],st=state.s[k],box=document.createElement("div");
+      box.className="fnd"+(st!=="pending"?" done":"");
+      var head=document.createElement("div");head.className="fnd-head";
+      var sev=document.createElement("span");sev.className="sev"+(f.sev==="Low"?" low":"");sev.textContent=f.sev;
+      var h=document.createElement("h4");h.textContent=f.title;
+      head.appendChild(sev);head.appendChild(h);box.appendChild(head);
+      var ch=document.createElement("div");ch.className="change";
+      var s=document.createElement("s");s.textContent=f.orig;
+      var arr=document.createElement("span");arr.textContent="→";
+      var b=document.createElement("b");b.textContent=f.fix;
+      ch.appendChild(s);ch.appendChild(arr);ch.appendChild(b);box.appendChild(ch);
+      var ev=document.createElement("div");ev.className="ev";ev.textContent="Evidence: "+f.ev;box.appendChild(ev);
+      if(st==="pending"){
+        var act=document.createElement("div");act.className="fnd-actions";
+        [["accepted","Accept","acc"],["rejected","Reject",""],["escalated","Escalate",""]].forEach(function(a){
+          var bt=document.createElement("button");bt.type="button";bt.textContent=a[1];if(a[2])bt.className=a[2];
+          bt.addEventListener("click",function(){decide(k,a[0])});act.appendChild(bt);
+        });
+        box.appendChild(act);
+      }else{
+        var stt=document.createElement("div");stt.className="state "+st;
+        stt.textContent=st==="accepted"?"Accepted: fix applied to the draft":st==="rejected"?"Rejected: original text kept":"Escalated: sent to a brand reviewer";
+        box.appendChild(stt);
+      }
+      list.appendChild(box);
+    });
+  }
+  function progress(){
+    var n=order.filter(function(k){return state.s[k]!=="pending"}).length;
+    $("pcount").textContent=state.ran?n+" of 3 resolved":"0 of 3 resolved";
+    $("pbar").style.width=(state.ran?n/3*100:0)+"%";
+  }
+  function stamp(){return new Date().toLocaleTimeString("en-GB",{hour12:false})}
+  function addLog(text){
+    var none=log.querySelector(".none");if(none)log.removeChild(none);
+    var li=document.createElement("li");
+    var t=document.createElement("time");t.textContent=stamp();
+    var m=document.createElement("span");m.textContent=text;
+    li.appendChild(t);li.appendChild(m);log.appendChild(li);
+  }
+  function render(){renderDraft();renderFindings();progress();empty.hidden=state.ran||scan.classList.contains("on")}
+  function decide(k,v){
+    state.s[k]=v;
+    var label={accepted:"Accepted",rejected:"Rejected",escalated:"Escalated"}[v];
+    addLog(label+": "+F[k].title);
+    render();
+  }
+  $("run").addEventListener("click",function(){
+    if(state.ran||timer)return;
+    $("run").disabled=true;empty.hidden=true;scan.classList.add("on");
+    timer=setTimeout(function(){
+      timer=null;scan.classList.remove("on");state.ran=true;
+      addLog("Review run: 3 findings");render();
+    },900);
+  });
+  $("reset").addEventListener("click",function(){
+    if(timer){clearTimeout(timer);timer=null}
+    scan.classList.remove("on");
+    state={ran:false,s:{c:"pending",g:"pending",n:"pending"}};
+    $("run").disabled=false;
+    log.textContent="";var li=document.createElement("li");li.className="none";li.textContent="No decisions yet.";log.appendChild(li);
+    render();
+  });
+  $("theme").addEventListener("click",function(){
+    var r=document.documentElement,cur=r.getAttribute("data-theme");
+    if(!cur)cur=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    r.setAttribute("data-theme",cur==="dark"?"light":"dark");
+  });
+  render();
+})();
+</script>
+
+</body></html>
